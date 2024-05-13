@@ -47,7 +47,7 @@ export default {
       this.$router.go(-1);
     },
     handleClose(){
-        this.onCLose();
+        this.onClose();
     }
   },
 

@@ -40,6 +40,7 @@ const routes=[
     path:'/todo/',
     name:'Todo',
     component:import(/* webpackChunkName : "todo" */'../components/routerComponent/routeComp.vue'),
+    meta:{ requiresAuth : true},
     children:[
         {
             path:'edit/:id',
@@ -71,6 +72,10 @@ const routers=createRouter({
 routers.beforeEach((to,from,next)=>{
     if(to.name=='BuiltInComponent'){
       next();
+    }
+    if(to.name=='Todo' && to.meta.requiresAuth)
+    {
+        next();
     }
     next();
 })

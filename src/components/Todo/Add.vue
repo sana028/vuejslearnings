@@ -1,4 +1,5 @@
 <template>
+    <!-- vuelidate -->
     <DialogComponent :open="showModal">
         <div>
             <form class="form" >
@@ -26,7 +27,7 @@
 <script>
 import DialogComponent from '../../base/Dialog.vue';
 import useVuelidate from '@vuelidate/core';
-import { minLength, required, email, sameAs,helpers } from '@vuelidate/validators';
+import { minLength, required, email, sameAs,helpers,alpha } from '@vuelidate/validators';
 import { mapGetters , mapMutations} from 'vuex';
 export default {
     name: "AddComponent",
@@ -42,7 +43,8 @@ export default {
             name: {
                 required:helpers.withMessage("name is required", required), 
                 $autoDirty: true,
-                minLength:minLength(3)
+                minLength:minLength(3),
+                alpha: helpers.withMessage('only alpha bets are validated',alpha),
             },
             email: {
                 required,
@@ -66,6 +68,7 @@ export default {
         },
         saveUserInfo() {
             this.v$.$touch();
+            console.log(this.v$);
             if (!this.v$.$error) {
                 this.INSERT_DATA({name:this.name,email:this.email});
                 this.$router.go(-1);

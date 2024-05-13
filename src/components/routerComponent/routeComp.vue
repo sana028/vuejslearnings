@@ -111,6 +111,12 @@ export default {
         userData() {
             return this.getAllData;
         }
+    },
+    beforeRouteUpdate(to,from,next){
+        if(to.name === 'Edit' || to.name=='Delete' ){
+            next();
+        }
+        next();
     }
 
 }
