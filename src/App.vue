@@ -1,12 +1,30 @@
 <script setup lang="ts">
-import BuiltInComponent from './components/built-in-components/BuiltInComponent.vue';
+import { RouterView } from 'vue-router';
+import NavbarComponent from './base/Navbar.vue';
+
 </script>
 
 <template>
- <BuiltInComponent/>
+ <div>
+  <NavbarComponent />
+ </div>
+<main>
+    <RouterView/>
+  </main>
+
 </template>
 
 <style scoped>
+
+main{
+  display:flex;
+  justify-self: center;
+  align-items: center;
+  align-content: center;
+  padding-top: 20px;
+  justify-content: center;
+  flex-direction: column;
+}
 header {
   line-height: 1.5;
 }
