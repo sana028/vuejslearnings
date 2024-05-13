@@ -44,3 +44,7 @@ npm run build
 ```sh
 npm run lint
 ```
+### for api call server 
+```sh
+node apiConfig.js
+```
