@@ -19,7 +19,7 @@
 
     </div>
     <div>
-      <p>the company diclared the name <span ref="el"></span></p>
+      <p>the company declared the name <span ref="el"></span></p>
     </div>
 
   </div>
@@ -47,7 +47,7 @@ export default {
       if (this.isDynamicComponentAvailable) {
         this.dynamicComponent = AboutPage;
         console.log(this.$refs.e)
-        this.$refs.el.innerHTML="learn";
+        this.$refs.el.innerHTML="cognine";
         this.$refs.el.style.backgroundColor='yellow';
       }
       else {

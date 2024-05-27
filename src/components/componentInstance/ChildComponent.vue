@@ -18,12 +18,12 @@ export default{
     mounted(){
         this.$el.children[0].style.backgroundColor="red";
        if(this.$slots.header){
-          alert('text sent')
+          alert('text sent to child')
        }
     },
     methods:{
         handleClick(){
-            this.$parent.$age=18;
+            this.$parent.form.$age=18;
             this.isFormAvailable=!this.isFormAvailable
             this.$emit('openForm',this.isFormAvailable)
             console.log("Child Component");

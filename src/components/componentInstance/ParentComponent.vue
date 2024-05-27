@@ -9,16 +9,15 @@
         <form v-if="isUserVoteValid" class="form">
             <div class="form-group mb-3">
                 <label class="form-label">Name</label>
-                <input type="text" v-model="_name" placeholder="Enter your name" class="form-control">
+                <input type="text" v-model="form._name" placeholder="Enter your name" class="form-control">
             </div>
             <div class="form-group mb-3">
                 <label class="form-label">Age</label>
-                <input type="number" v-model="$age" placeholder="Enter your age" class="form-control"/>
+                <input type="number" v-model="form.$age" placeholder="Enter your age" class="form-control"/>
                 <span ref="list"></span>
             </div>
-            <button type="submit" class="btn btn-primary" @click.prevent="resetForm()">Reset</button>
+            <button type="reset" class="btn btn-primary" @click.prevent="resetForm()">Reset</button>
         </form>
-        {{ _name + $name }}
     </div>
 
 </template>
@@ -31,9 +30,10 @@ export default {
         return {
             msg: 'hello',
             // eslint-disable-next-line vue/no-reserved-keys
+            form:{
             _name:'',
-            $name:'',
             $age:0,
+            },
             isUserVoteValid:false
         }
     },
@@ -52,13 +52,9 @@ export default {
     },
     methods:{
         resetForm(){
-            console.log(this.$data)
-            this._name='';
-            this.$name='';
-            this.$age=0;
+            Object.assign(this.$data.form,{_name:'',$age:0});
         },
         handleForm(isFormAvailable){
-            console.log('open')
             if(isFormAvailable){
                 this.isUserVoteValid=true;
             }

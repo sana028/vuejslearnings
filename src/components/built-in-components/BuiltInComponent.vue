@@ -1,5 +1,7 @@
 <template>
     <!--Teleport-->
+    <div id="modals"></div>
+    <p class="passage"></p>
     <div class="builtin-component">
         <Teleport to="body">
             <div class="modal" v-if="isOpenModal">
@@ -10,25 +12,36 @@
                 </div>
             </div>
         </Teleport>
-      
-
-        <!-- Transition Group -->
-        <transition-group name="list" tag="ul">
-
-            <li v-for="(item, index) in listItems" :key="item.id">
-                {{ item.text }}
-                <button @click="sendthedata(index)">Remove</button>
-            </li>
-        </transition-group>
-
-        <!-- Keep Alive --> <!-- Transition -->
-        <transition name="fade">
-            <keep-alive>
-                <component :is="dynamicComponent"></component>
-            </keep-alive>
-        </transition>
-        <button @click="toggleComponent">Toggle Component</button>
     </div>
+    <Teleport to=".passage">
+    <p>Hi</p>
+    </Teleport>
+
+    <Teleport to="#modals">
+        <div>A</div>
+    </Teleport>
+    <Teleport to="#modals">
+        <div>B</div>
+    </Teleport>
+
+
+    <!-- Transition Group -->
+    <transition-group name="list" tag="ul">
+
+        <li v-for="(item, index) in listItems" :key="item.id">
+            {{ item.text }}
+            <button @click="sendthedata(index)">Remove</button>
+        </li>
+    </transition-group>
+
+    <!-- Keep Alive --> <!-- Transition -->
+    <transition name="fade">
+        <keep-alive>
+            <component :is="dynamicComponent"></component>
+        </keep-alive>
+    </transition>
+    <button @click="toggleComponent">Toggle Component</button>
+
 </template>
 <script>
 import AboutPage from '../builtin-attribute/About.vue';
@@ -90,6 +103,8 @@ export default {
     padding: 30px;
     border-radius: 8px;
     box-shadow: 0 4px 16px #00000026;
+    display: block;
+    height: auto;
 }
 
 .fade-enter-active,
